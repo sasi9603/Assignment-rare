@@ -1,0 +1,28 @@
+.job-container {
+    width: 600px;
+    margin: 40px auto;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    padding: 6px;
+    width: 100%;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  .job-item {
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .job-item:hover {
+    background-color: #f1f5ff;
+  }
+  

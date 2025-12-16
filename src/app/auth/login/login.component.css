@@ -1,0 +1,43 @@
+.login-container {
+    width: 300px;
+    margin: 80px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-size: 14px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 6px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 8px;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background: #999;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+  }

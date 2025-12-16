@@ -1,0 +1,15 @@
+<div class="job-container">
+    <h2>Job List</h2>
+  
+    <div class="filters">
+      <input placeholder="Search by title" [(ngModel)]="searchText" />
+      <input placeholder="Filter by location" [(ngModel)]="locationFilter" />
+    </div>
+    <ul>
+      <li *ngFor="let job of jobs" (click)="applyJob(job.id)" class="job-item">
+        <strong>{{ job.title }}</strong> - {{ job.company }} - {{ job.location }}
+        <span class="text-primary float-end" (click)="$event.stopPropagation(); applyJob(job.id)">Apply</span>
+      </li>
+    </ul>
+    
+  </div>
