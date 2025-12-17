@@ -10,29 +10,97 @@ export interface Job {
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
-
   private jobsSubject = new BehaviorSubject<Job[]>([]);
   jobs$ = this.jobsSubject.asObservable();
-
+  private jobs: Job[] = [
+    {
+      id: 1,
+      title: 'Angular Developer',
+      company: 'Rare Tech',
+      location: 'Bangalore',
+    },
+    {
+      id: 2,
+      title: 'Frontend Developer',
+      company: 'TechNova Solutions',
+      location: 'Hyderabad',
+    },
+    {
+      id: 3,
+      title: 'Java Developer',
+      company: 'InfySoft',
+      location: 'Chennai',
+    },
+    {
+      id: 4,
+      title: 'Full Stack Developer',
+      company: 'CodeCraft Pvt Ltd',
+      location: 'Pune',
+    },
+    {
+      id: 5,
+      title: 'UI Developer',
+      company: 'DesignHub',
+      location: 'Bangalore',
+    },
+    { id: 6, title: 'React Developer', company: 'WebWorks', location: 'Noida' },
+    {
+      id: 7,
+      title: 'Software Engineer',
+      company: 'NextGen IT',
+      location: 'Mumbai',
+    },
+    {
+      id: 8,
+      title: 'Backend Developer',
+      company: 'CloudMatrix',
+      location: 'Hyderabad',
+    },
+    {
+      id: 9,
+      title: 'Angular Lead',
+      company: 'Digital Minds',
+      location: 'Bangalore',
+    },
+    {
+      id: 10,
+      title: 'Senior Java Developer',
+      company: 'Enterprise Solutions',
+      location: 'Chennai',
+    },
+    {
+      id: 11,
+      title: 'Web Developer',
+      company: 'BrightApps',
+      location: 'Kochi',
+    },
+    {
+      id: 12,
+      title: 'UI/UX Engineer',
+      company: 'Creative Labs',
+      location: 'Trivandrum',
+    },
+    {
+      id: 13,
+      title: 'Frontend Engineer',
+      company: 'InnovateX',
+      location: 'Pune',
+    },
+    {
+      id: 14,
+      title: 'Angular Engineer',
+      company: 'StackWave',
+      location: 'Bangalore',
+    },
+    {
+      id: 15,
+      title: 'Application Developer',
+      company: 'TechBridge',
+      location: 'Coimbatore',
+    },
+  ];
   constructor() {
-    const jobs: Job[] = [
-      { id: 1, title: 'Angular Developer', company: 'Rare Tech', location: 'Bangalore' },
-      { id: 2, title: 'Frontend Developer', company: 'TechNova Solutions', location: 'Hyderabad' },
-      { id: 3, title: 'Java Developer', company: 'InfySoft', location: 'Chennai' },
-      { id: 4, title: 'Full Stack Developer', company: 'CodeCraft Pvt Ltd', location: 'Pune' },
-      { id: 5, title: 'UI Developer', company: 'DesignHub', location: 'Bangalore' },
-      { id: 6, title: 'React Developer', company: 'WebWorks', location: 'Noida' },
-      { id: 7, title: 'Software Engineer', company: 'NextGen IT', location: 'Mumbai' },
-      { id: 8, title: 'Backend Developer', company: 'CloudMatrix', location: 'Hyderabad' },
-      { id: 9, title: 'Angular Lead', company: 'Digital Minds', location: 'Bangalore' },
-      { id: 10, title: 'Senior Java Developer', company: 'Enterprise Solutions', location: 'Chennai' },
-      { id: 11, title: 'Web Developer', company: 'BrightApps', location: 'Kochi' },
-      { id: 12, title: 'UI/UX Engineer', company: 'Creative Labs', location: 'Trivandrum' },
-      { id: 13, title: 'Frontend Engineer', company: 'InnovateX', location: 'Pune' },
-      { id: 14, title: 'Angular Engineer', company: 'StackWave', location: 'Bangalore' },
-      { id: 15, title: 'Application Developer', company: 'TechBridge', location: 'Coimbatore' }
-    ];
-    this.jobsSubject.next(jobs);
+    this.jobsSubject.next(this.jobs);
   }
 
   getJobs(): Observable<Job[]> {
@@ -40,14 +108,18 @@ export class JobService {
   }
 
   filterJobs(title?: string, location?: string): void {
-    let filtered = this.jobsSubject.getValue();
+    let filtered = this.jobs;
 
-    if (title) {
-      filtered = filtered.filter(job => job.title.toLowerCase().includes(title.toLowerCase()));
+    if (title && title.trim()) {
+      filtered = filtered.filter(j =>
+        j.title.toLowerCase().includes(title.toLowerCase())
+      );
     }
 
-    if (location) {
-      filtered = filtered.filter(job => job.location.toLowerCase().includes(location.toLowerCase()));
+    if (location && location.trim()) {
+      filtered = filtered.filter(j =>
+        j.location.toLowerCase().includes(location.toLowerCase())
+      );
     }
 
     this.jobsSubject.next(filtered);
